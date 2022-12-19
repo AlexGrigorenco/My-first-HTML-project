@@ -47,7 +47,17 @@ const menuIcon = document.querySelector('.menu-icon');
 const nav = document.querySelector('.nav');
 const body = document.querySelector('body');
 
-navBtn.onclick = function(){
+navBtn.addEventListener('click', () => {
+    toggleMenu()
+
+    nav.querySelectorAll('a').forEach(element => {
+        element.addEventListener('click', () => {
+            document.querySelector('.nav--mobile') ? toggleMenu() : null
+        })
+    })
+})
+
+function toggleMenu(){
     nav.classList.toggle('nav--mobile');
     menuIcon.classList.toggle('menu-icon-active');
     body.classList.toggle('lock');
